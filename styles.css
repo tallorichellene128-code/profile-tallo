@@ -1,0 +1,401 @@
+/* ─── DESIGN TOKENS ────────────────────────────────────────────── */
+:root {
+  --bg:           #090a0f;
+  --text:         #94a3b8;
+  --heading:      #f8fafc;
+  --accent:       #10b981;
+  --accent-grad:  linear-gradient(135deg, #10b981, #3b82f6);
+  --rail-bg:      rgba(9, 10, 15, 0.85);
+  --line:         #1e293b;
+  --pill-bg:      #1e293b;
+  --pill-hover:   #334155;
+
+  /* Per-slide gradient backgrounds */
+  --grad-hero:    linear-gradient(135deg, #0a0f1e 0%, #0f2027 50%, #111827 100%);
+  --grad-about:   linear-gradient(135deg, #0f172a 0%, #1e1b4b 60%, #0f172a 100%);
+  --grad-skills:  linear-gradient(135deg, #071a12 0%, #042f2e 60%, #090a0f 100%);
+}
+
+:root[data-theme="light"] {
+  --bg:           #f8fafc;
+  --text:         #475569;
+  --heading:      #0f172a;
+  --accent:       #059669;
+  --accent-grad:  linear-gradient(135deg, #059669, #2563eb);
+  --rail-bg:      rgba(248, 250, 252, 0.9);
+  --line:         #e2e8f0;
+  --pill-bg:      #e2e8f0;
+  --pill-hover:   #cbd5e1;
+
+  --grad-hero:    linear-gradient(135deg, #dbeafe 0%, #ede9fe 50%, #f0fdf4 100%);
+  --grad-about:   linear-gradient(135deg, #f0f9ff 0%, #e0e7ff 60%, #f0fdf4 100%);
+  --grad-skills:  linear-gradient(135deg, #ecfdf5 0%, #d1fae5 60%, #f0fdf4 100%);
+}
+
+/* ─── RESET ────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  font-size: 16px;
+  /* Prevent the html element itself from scrolling */
+  overflow: hidden;
+  height: 100%;
+}
+
+body {
+  display: flex;
+  height: 100%;
+  overflow: hidden;
+  font-family: 'Inter', -apple-system, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+h1, h2 {
+  color: var(--heading);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  transition: color 0.3s ease;
+}
+
+/* ─── SIDEBAR RAIL ─────────────────────────────────────────────── */
+.site-rail {
+  flex-shrink: 0;
+  width: 300px;
+  height: 100%;
+  background: var(--rail-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-right: 1px solid var(--line);
+  padding: 50px 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 100;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.rail-top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.rail-top .avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 24px;
+  border: 2px solid var(--line);
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+.rail-top .avatar:hover {
+  transform: scale(1.05);
+  border-color: var(--accent);
+}
+
+.rail-note {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--heading);
+  margin-bottom: 8px;
+}
+.rail-desc {
+  font-size: 0.95rem;
+  color: var(--text);
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+.rail-address {
+  font-size: 0.85rem;
+  color: var(--text);
+  opacity: 0.7;
+  margin: 0;
+}
+
+.contact-links {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+.contact-links a {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+.contact-links a:hover {
+  color: var(--accent);
+  transform: translateX(4px);
+}
+
+.theme-toggle {
+  background: var(--pill-bg);
+  border: 1px solid var(--line);
+  color: var(--text);
+  border-radius: 50px;
+  padding: 10px 16px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  width: fit-content;
+}
+.theme-toggle:hover {
+  border-color: var(--accent);
+  background: var(--pill-hover);
+  color: var(--heading);
+  transform: translateY(-2px);
+}
+
+/* ─── SNAP SCROLL DECK ─────────────────────────────────────────── */
+.deck {
+  flex: 1;
+  height: 100%;
+  overflow-y: scroll;
+  /* CSS Scroll Snap */
+  scroll-snap-type: y mandatory;
+  -webkit-overflow-scrolling: touch;
+  /* Hide the scrollbar visually but keep it functional */
+  scrollbar-width: none;
+}
+.deck::-webkit-scrollbar { display: none; }
+
+/* ─── INDIVIDUAL PAGES ─────────────────────────────────────────── */
+.page {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  height: 100%;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 80px 80px;
+  position: relative;
+  transition: background 0.6s ease;
+  overflow: hidden;
+}
+
+/* Per-slide gradient backgrounds */
+.page--hero   { background: var(--grad-hero); }
+.page--about  { background: var(--grad-about); }
+.page--skills { background: var(--grad-skills); }
+
+/* Subtle noise texture overlay */
+.page::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+/* ─── PAGE CONTENT WRAPPER ─────────────────────────────────────── */
+.page-content {
+  position: relative;
+  z-index: 1;
+  max-width: 860px;
+  width: 100%;
+}
+
+/* ─── HERO H1 ──────────────────────────────────────────────────── */
+.page--hero h1 {
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  line-height: 1.1;
+}
+
+.word {
+  display: inline-block;
+  margin-right: 0.18em;
+}
+
+.word.accent {
+  background: var(--accent-grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── ABOUT SLIDE ──────────────────────────────────────────────── */
+.slide-label {
+  font-size: 2.5rem;
+  margin-bottom: 32px;
+}
+
+.body-text p {
+  font-size: 1.2rem;
+  line-height: 1.85;
+  color: var(--text);
+  max-width: 68ch;
+}
+
+/* ─── SKILLS SLIDE ─────────────────────────────────────────────── */
+.page-content.split {
+  display: flex;
+  gap: 64px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.split .col { flex: 1; min-width: 280px; }
+.split .slide-label { font-size: 2rem; margin-bottom: 28px; }
+
+.split ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.split li {
+  padding: 10px 18px;
+  background: var(--pill-bg);
+  color: var(--text);
+  border-radius: 50px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+.split li:hover {
+  background: var(--pill-hover);
+  color: var(--heading);
+  border-color: var(--line);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+/* ─── DOT NAVIGATION ───────────────────────────────────────────── */
+.dot-nav {
+  position: fixed;
+  right: 28px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  z-index: 200;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--line);
+  border: 2px solid var(--text);
+  cursor: pointer;
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  padding: 0;
+}
+.dot.is-active {
+  background: var(--accent);
+  border-color: var(--accent);
+  transform: scale(1.5);
+  box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.25);
+}
+
+/* ─── SCROLL HINT ARROW ────────────────────────────────────────── */
+.scroll-hint {
+  position: absolute;
+  bottom: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  animation: bounceDown 2s ease-in-out infinite;
+}
+.scroll-hint span {
+  display: block;
+  width: 22px;
+  height: 22px;
+  border-right: 2px solid var(--text);
+  border-bottom: 2px solid var(--text);
+  transform: rotate(45deg);
+  opacity: 0.5;
+}
+@keyframes bounceDown {
+  0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.5; }
+  50%       { transform: translateX(-50%) translateY(8px); opacity: 1; }
+}
+
+/* ─── ENTRANCE ANIMATIONS ──────────────────────────────────────── */
+@media (prefers-reduced-motion: no-preference) {
+  .anim {
+    opacity: 0;
+    transform: translateY(32px);
+    transition:
+      opacity  0.7s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+  }
+  .anim.in { opacity: 1; transform: translateY(0); }
+
+  /* Stagger delays */
+  .anim:nth-child(1)  { transition-delay: 0.05s; }
+  .anim:nth-child(2)  { transition-delay: 0.13s; }
+  .anim:nth-child(3)  { transition-delay: 0.21s; }
+  .anim:nth-child(4)  { transition-delay: 0.29s; }
+  .anim:nth-child(5)  { transition-delay: 0.37s; }
+  .anim:nth-child(6)  { transition-delay: 0.45s; }
+  .anim:nth-child(7)  { transition-delay: 0.53s; }
+
+  /* Hero words animate individually */
+  .page--hero .word { opacity: 0; transform: translateY(24px); transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.6s cubic-bezier(0.16,1,0.3,1); }
+  .page--hero.is-active .word { opacity: 1; transform: translateY(0); }
+  .page--hero .word:nth-child(1) { transition-delay: 0.05s; }
+  .page--hero .word:nth-child(2) { transition-delay: 0.12s; }
+  .page--hero .word:nth-child(3) { transition-delay: 0.19s; }
+  .page--hero .word:nth-child(5) { transition-delay: 0.26s; }
+  .page--hero .word:nth-child(6) { transition-delay: 0.33s; }
+  .page--hero .word:nth-child(8) { transition-delay: 0.40s; }
+  .page--hero .word:nth-child(9) { transition-delay: 0.47s; }
+}
+
+/* ─── RESPONSIVE ───────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .page { padding: 70px 48px; }
+  .page--hero h1 { font-size: 3rem; }
+}
+
+@media (max-width: 768px) {
+  body {
+    flex-direction: column;
+    height: auto;
+    overflow: auto;
+  }
+
+  .site-rail {
+    width: 100%;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--line);
+    backdrop-filter: none;
+    padding: 36px 28px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+
+  .deck {
+    height: auto;
+    overflow-y: visible;
+    scroll-snap-type: none;
+  }
+
+  .page {
+    scroll-snap-align: none;
+    height: auto;
+    min-height: 100svh;
+    padding: 64px 28px;
+  }
+
+  .dot-nav { display: none; }
+}

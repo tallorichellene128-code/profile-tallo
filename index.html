@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Richellene Mae Tallo — Computer Engineering Student</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Fixed sidebar rail -->
+  <aside class="site-rail">
+    <div class="rail-top">
+      <img src="avatar.png" alt="Photo of Richellene Mae Tallo" class="avatar">
+      <p class="rail-note">Richellene Mae Tallo</p>
+      <p class="rail-desc">3rd-Year Computer Engineering Student</p>
+      <p class="rail-address">📍 Liloan, Cebu, Philippines</p>
+    </div>
+    <div class="rail-bottom">
+      <div class="contact-links">
+        <a href="https://github.com/tallorichellene128-code">GitHub</a>
+        <a href="mailto:tallo.richellene128@gmail.com">Email</a>
+      </div>
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+    </div>
+  </aside>
+
+  <!-- Slide deck: snap-scroll container -->
+  <div class="deck" id="deck">
+
+    <!-- Slide 1: Hero -->
+    <section class="page page--hero" id="page-0" data-index="0">
+      <div class="page-content">
+        <h1>
+          <span class="word">Learning</span>
+          <span class="word">how</span>
+          <span class="word">hardware</span>
+          <br>
+          <span class="word">and</span>
+          <span class="word">software</span>
+          <br>
+          <span class="word">work</span>
+          <span class="word accent">together.</span>
+        </h1>
+      </div>
+      <!-- Scroll hint arrow -->
+      <div class="scroll-hint" aria-hidden="true">
+        <span></span>
+      </div>
+    </section>
+
+    <!-- Slide 2: About -->
+    <section class="page page--about" id="page-1" data-index="1">
+      <div class="page-content">
+        <h2 class="slide-label">About Me</h2>
+        <div class="body-text">
+          <p>
+            I'm a 3rd-year Computer Engineering student with a strong interest
+            in technology, problem-solving, and software development. I enjoy
+            learning new skills, working on hands-on projects, and exploring
+            how hardware and software work together. I'm continuously
+            developing my technical and creative skills while preparing for
+            future opportunities in the field of computer engineering.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 3: Skills & Interests -->
+    <section class="page page--skills" id="page-2" data-index="2">
+      <div class="page-content split">
+        <div class="col">
+          <h2 class="slide-label">Skills</h2>
+          <ul>
+            <li>Programming and software development</li>
+            <li>Basic C/C++ programming</li>
+            <li>Basic electronics and circuit design</li>
+            <li>Teamwork and communication</li>
+            <li>Creativity and innovation</li>
+            <li>Project planning and development</li>
+          </ul>
+        </div>
+        <div class="col">
+          <h2 class="slide-label">Interests</h2>
+          <ul>
+            <li>Robotics and embedded systems</li>
+            <li>Computer hardware</li>
+            <li>Software and web development</li>
+            <li>Building creative technology projects</li>
+            <li>Learning new programming languages and tools</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /.deck -->
+
+  <!-- Dot navigation -->
+  <nav class="dot-nav" aria-label="Slide navigation">
+    <button class="dot is-active" data-target="0" aria-label="Go to slide 1"></button>
+    <button class="dot" data-target="1" aria-label="Go to slide 2"></button>
+    <button class="dot" data-target="2" aria-label="Go to slide 3"></button>
+  </nav>
+
+  <script src="script.js"></script>
+</body>
+</html>
