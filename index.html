@@ -11,41 +11,47 @@
 </head>
 <body>
 
-  <!-- Fixed sidebar rail -->
-  <aside class="site-rail">
-    <div class="rail-top">
-      <img src="avatar.png" alt="Photo of Richellene Mae Tallo" class="avatar">
-      <p class="rail-note">Richellene Mae Tallo</p>
-      <p class="rail-desc">3rd-Year Computer Engineering Student</p>
-      <p class="rail-address">📍 Liloan, Cebu, Philippines</p>
+  <!-- Top nav: sections + contact -->
+  <nav class="top-nav" aria-label="Section navigation">
+    <div class="nav-links">
+      <button class="nav-link is-active" data-target="0">Home</button>
+      <button class="nav-link" data-target="1">About</button>
+      <button class="nav-link" data-target="2">Skills</button>
     </div>
-    <div class="rail-bottom">
-      <div class="contact-links">
-        <p class="contact-label">Contact</p>
-        <a href="https://github.com/tallorichellene128-code" target="_blank" rel="noopener noreferrer">GitHub</a>
-        <a href="mailto:richellenemae.tallo@cit.edu">Email</a>
-      </div>
+    <div class="nav-contact">
+      <a href="https://github.com/tallorichellene128-code" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="mailto:richellenemae.tallo@cit.edu">Email</a>
       <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">🌙</button>
     </div>
-  </aside>
+  </nav>
 
   <!-- Slide deck: snap-scroll container -->
   <div class="deck" id="deck">
 
     <!-- Slide 1: Hero -->
     <section class="page page--hero" id="page-0" data-index="0">
-      <div class="page-content">
-        <h1>
-          <span class="word">Learning</span>
-          <span class="word">how</span>
-          <span class="word">hardware</span>
-          <br>
-          <span class="word">and</span>
-          <span class="word">software</span>
-          <br>
-          <span class="word">work</span>
-          <span class="word accent">together.</span>
-        </h1>
+      <div class="page-content hero-grid">
+        <div class="hero-text">
+          <div class="hero-info">
+            <p class="hero-name">Richellene Mae Tallo</p>
+            <p class="hero-role">3rd-Year Computer Engineering Student</p>
+            <p class="hero-location">📍 Liloan, Cebu, Philippines</p>
+          </div>
+          <h1 class="hero-tagline">
+            <span class="word">Learning</span>
+            <span class="word">how</span>
+            <span class="word">hardware</span>
+            <br>
+            <span class="word">and</span>
+            <span class="word">software</span>
+            <br>
+            <span class="word">work</span>
+            <span class="word accent">together.</span>
+          </h1>
+        </div>
+        <div class="hero-portrait">
+          <img src="avatar.png" alt="Photo of Richellene Mae Tallo" class="hero-photo">
+        </div>
       </div>
       <!-- Scroll hint arrow -->
       <div class="scroll-hint" aria-hidden="true">
@@ -72,27 +78,37 @@
 
     <!-- Slide 3: Skills & Interests -->
     <section class="page page--skills" id="page-2" data-index="2">
-      <div class="page-content split">
-        <div class="col">
-          <h2 class="slide-label">Skills</h2>
-          <ul>
-            <li>Programming and software development</li>
-            <li>Basic C/C++ programming</li>
-            <li>Basic electronics and circuit design</li>
-            <li>Teamwork and communication</li>
-            <li>Creativity and innovation</li>
-            <li>Project planning and development</li>
-          </ul>
+      <div class="page-content">
+        <div class="split">
+          <div class="col">
+            <h2 class="slide-label">Skills</h2>
+            <ul class="timeline">
+              <li class="timeline-item"><span class="timeline-dot"></span><span class="timeline-text">Programming and software development</span></li>
+              <li class="timeline-item"><span class="timeline-dot"></span><span class="timeline-text">Basic C/C++ programming</span></li>
+              <li class="timeline-item"><span class="timeline-dot"></span><span class="timeline-text">Basic electronics and circuit design</span></li>
+              <li class="timeline-item"><span class="timeline-dot"></span><span class="timeline-text">Teamwork and communication</span></li>
+              <li class="timeline-item"><span class="timeline-dot"></span><span class="timeline-text">Creativity and innovation</span></li>
+              <li class="timeline-item"><span class="timeline-dot"></span><span class="timeline-text">Project planning and development</span></li>
+            </ul>
+          </div>
+          <div class="col">
+            <h2 class="slide-label">Interests</h2>
+            <ul class="timeline">
+              <li class="timeline-item"><span class="timeline-dot"></span><span class="timeline-text">Robotics and embedded systems</span></li>
+              <li class="timeline-item"><span class="timeline-dot"></span><span class="timeline-text">Computer hardware</span></li>
+              <li class="timeline-item"><span class="timeline-dot"></span><span class="timeline-text">Software and web development</span></li>
+              <li class="timeline-item"><span class="timeline-dot"></span><span class="timeline-text">Building creative technology projects</span></li>
+              <li class="timeline-item"><span class="timeline-dot"></span><span class="timeline-text">Learning new programming languages and tools</span></li>
+            </ul>
+          </div>
         </div>
-        <div class="col">
-          <h2 class="slide-label">Interests</h2>
-          <ul>
-            <li>Robotics and embedded systems</li>
-            <li>Computer hardware</li>
-            <li>Software and web development</li>
-            <li>Building creative technology projects</li>
-            <li>Learning new programming languages and tools</li>
-          </ul>
+
+        <div class="skills-contact">
+          <p class="contact-label">Contact</p>
+          <div class="skills-contact-links">
+            <a href="https://github.com/tallorichellene128-code" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="mailto:richellenemae.tallo@cit.edu">Email</a>
+          </div>
         </div>
       </div>
     </section>

@@ -29,6 +29,7 @@ toggleBtn.addEventListener('click', () => {
   const deck   = document.getElementById('deck');
   const pages  = Array.from(document.querySelectorAll('.page'));
   const dots   = Array.from(document.querySelectorAll('.dot'));
+  const navLinks = Array.from(document.querySelectorAll('.nav-link'));
   let current  = 0;
   let isAnimating = false;
 
@@ -64,6 +65,9 @@ toggleBtn.addEventListener('click', () => {
     dots.forEach((dot, i) => {
       dot.classList.toggle('is-active', i === index);
     });
+    navLinks.forEach((link, i) => {
+      link.classList.toggle('is-active', i === index);
+    });
   }
 
   // ── Scroll to a specific page index ──────────────────────────
@@ -93,6 +97,13 @@ toggleBtn.addEventListener('click', () => {
   dots.forEach(dot => {
     dot.addEventListener('click', () => {
       goToPage(parseInt(dot.dataset.target, 10));
+    });
+  });
+
+  // ── Top nav clicks ───────────────────────────────────────────
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      goToPage(parseInt(link.dataset.target, 10));
     });
   });
 
