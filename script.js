@@ -32,6 +32,7 @@ toggleBtn.addEventListener('click', () => {
   const navLinks = Array.from(document.querySelectorAll('.nav-link[data-target]'));
   const contactJump = document.querySelector('.contact-jump');
   const contactSection = document.getElementById('contact');
+  const delayClasses = ['delay-0', 'delay-1', 'delay-2', 'delay-3', 'delay-4', 'delay-5', 'delay-6', 'delay-7', 'delay-8', 'delay-9', 'delay-10'];
   let current  = 0;
   let isAnimating = false;
 
@@ -44,12 +45,12 @@ toggleBtn.addEventListener('click', () => {
 
     targets.forEach((el, i) => {
       el.classList.add('anim');
+      el.classList.remove(...delayClasses);
+      el.classList.add(delayClasses[Math.min(i, delayClasses.length - 1)]);
       // Reset first (for re-entry if user scrolls back)
       el.classList.remove('in');
       // Force reflow so the reset takes effect before re-adding
       void el.offsetWidth;
-      // Override nth-child delay with an index-based one for reliability
-      el.style.transitionDelay = `${0.05 + i * 0.08}s`;
       el.classList.add('in');
     });
 
