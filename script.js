@@ -29,7 +29,9 @@ toggleBtn.addEventListener('click', () => {
   const deck   = document.getElementById('deck');
   const pages  = Array.from(document.querySelectorAll('.page'));
   const dots   = Array.from(document.querySelectorAll('.dot'));
-  const navLinks = Array.from(document.querySelectorAll('.nav-link'));
+  const navLinks = Array.from(document.querySelectorAll('.nav-link[data-target]'));
+  const contactJump = document.querySelector('.contact-jump');
+  const contactSection = document.getElementById('contact');
   let current  = 0;
   let isAnimating = false;
 
@@ -68,6 +70,7 @@ toggleBtn.addEventListener('click', () => {
     navLinks.forEach((link, i) => {
       link.classList.toggle('is-active', i === index);
     });
+    contactJump.classList.remove('is-active');
   }
 
   // ── Scroll to a specific page index ──────────────────────────
@@ -105,6 +108,23 @@ toggleBtn.addEventListener('click', () => {
     link.addEventListener('click', () => {
       goToPage(parseInt(link.dataset.target, 10));
     });
+  });
+
+  contactJump.addEventListener('click', () => {
+    const isAlreadyOnSkills = current === 2;
+
+    if (!isAlreadyOnSkills) {
+      goToPage(2);
+    }
+
+    setTimeout(() => {
+      navLinks.forEach(link => link.classList.remove('is-active'));
+      contactJump.classList.add('is-active');
+      contactSection.scrollIntoView({
+        behavior: 'smooth',
+        block: 'end'
+      });
+    }, isAlreadyOnSkills ? 0 : 550);
   });
 
   // ── Track scroll position via IntersectionObserver ───────────

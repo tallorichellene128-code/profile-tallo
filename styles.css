@@ -136,16 +136,30 @@ h1, h2 {
 .nav-contact {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 14px;
 }
-.nav-contact a {
+.nav-icon-link {
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
   color: var(--text);
   text-decoration: none;
-  font-weight: 500;
-  font-size: 0.85rem;
-  transition: color 0.2s ease;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
-.nav-contact a:hover { color: var(--accent); }
+.nav-icon-link:hover {
+  background: var(--pill-bg);
+  color: var(--accent);
+  transform: translateY(-2px);
+}
+.nav-icon {
+  width: 20px;
+  height: 20px;
+  display: block;
+  fill: currentColor;
+}
 
 .theme-toggle {
   width: 36px;
@@ -462,6 +476,8 @@ a:active,
 [role="button"]:hover,
 .nav-link,
 .nav-link:hover,
+.nav-icon-link,
+.nav-icon-link:hover,
 .theme-toggle,
 .theme-toggle:hover,
 .dot,
