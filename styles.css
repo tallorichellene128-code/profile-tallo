@@ -47,14 +47,12 @@
 /* ─── RESET ────────────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-/* Custom cursor */
-html, body, * {
-  cursor: url('cursor.svg') 4 2, auto;
-}
-
-/* Pointer cursor for clickable elements */
-a, button, .dot, .theme-toggle, .contact-links a {
-  cursor: url('cursor.svg') 4 2, pointer;
+/* Custom cursor — applied universally including all interactive elements */
+*, *:hover, *:focus, *:active,
+a, a:hover, button, button:hover,
+.dot, .dot:hover, .theme-toggle, .theme-toggle:hover,
+.contact-links a, .contact-links a:hover {
+  cursor: url('cursor.svg') 4 2, auto !important;
 }
 
 html {
